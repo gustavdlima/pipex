@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msg.c                                              :+:      :+:    :+:   */
+/*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 19:02:10 by gusalves          #+#    #+#             */
-/*   Updated: 2021/12/15 19:14:14 by gusalves         ###   ########.fr       */
+/*   Created: 2022/01/03 21:34:47 by gusalves          #+#    #+#             */
+/*   Updated: 2022/01/04 17:43:18 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	msg_out(char *string, t_pipex pipex)
+void	cmd_exec(char *argv, char **envp)
 {
-	int	size;
+	char	**matrix;
 
-	size = ft_strlen(string);
-	write(2, string, size);
+	
+	matrix = ft_split(argv, ' ');
+	execve(find_path(argv), matrix, envp);
 }

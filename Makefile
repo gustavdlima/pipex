@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/07 00:11:59 by gusalves          #+#    #+#              #
-#    Updated: 2021/12/15 17:49:29 by gusalves         ###   ########.fr        #
+#    Created: 2021/10/12 02:05:40 by gusalves          #+#    #+#              #
+#    Updated: 2022/01/04 17:10:36 by gusalves         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,22 +25,21 @@ LIBFT	= $(LIBFT_PATH)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_PATH) -lft
 INCLUDES	= $(addprefix -I,$(INCLUDES_DIR))
 
-SRCS	 =
-
+SRCS	 = pipex.c pipex_utils.c child.c parent.c cmd_exec.c find_path.c
 OBJS	:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 SRCS	:= $(addprefix $(SRC_DIR)/,$(SRCS))
 
 all:	$(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(LIBFT_FLAGS) -lmlx -lXext -lX11
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(LIBFT_FLAGS)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIBFT_FLAGS) -lmlx -lXext -lX11
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIBFT_FLAGS)
 
 clean:
 	make clean -C $(LIBFT_PATH)
