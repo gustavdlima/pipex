@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 18:57:50 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/04 17:17:09 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/04 23:13:14 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 
-# define PATH "/usr/local/sbin/:/usr/local/bin/:/usr/sbin/:/usr/bin/:/sbin/:/bin/:/usr/games/:/usr/local/games/:/snap/bin/"
+# define PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 // start function
 void	pipex(char **argv, char **envp);
@@ -38,5 +38,6 @@ char	*find_path(char *command);
 
 // utils
 void	free_matrix(char **path);
+char	*strjoin_free(char *s1, char const *s2);
 
 #endif

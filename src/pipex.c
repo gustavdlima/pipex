@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 17:50:08 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/04 17:39:24 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/04 23:42:52 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	pipex(char **argv, char **envp)
 {
 	int	fd[2];
 	int	pid1;
-	int	pid2;
 
 	pipe(fd);
 	if (pipe(fd) == -1)
@@ -24,14 +23,12 @@ void	pipex(char **argv, char **envp)
 	pid1 = fork();
 	if (pid1 < 0)
 		return (perror("pid1 error."));
-	if (!pid1)
+	if (pid1 == 0)
 		child_proc(argv, envp, fd);
-	pid2 = fork();
-	if (pid2 == 0)
-	{
-		parent_proc(argv, envp, fd);
-	}
 	waitpid(pid1, NULL, 0);
+	parent_proc(argv, envp, fd);
+	close(fd[0]);
+	close(fd[1]);
 }
 
 int	main(int argc, char **argv, char **envp)
