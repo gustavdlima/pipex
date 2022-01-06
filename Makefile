@@ -6,7 +6,7 @@
 #    By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 02:05:40 by gusalves          #+#    #+#              #
-#    Updated: 2022/01/04 20:25:04 by gusalves         ###   ########.fr        #
+#    Updated: 2022/01/05 21:32:46 by gusalves         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT	= $(LIBFT_PATH)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_PATH) -lft
 INCLUDES	= $(addprefix -I,$(INCLUDES_DIR))
 
-SRCS	 = pipex.c pipex_utils.c child.c parent.c cmd_exec.c find_path.c
+SRCS	 = pipex.c pipex_utils.c child.c parent.c cmd_exec.c find_path.c 					init_var.c
 OBJS	:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 SRCS	:= $(addprefix $(SRC_DIR)/,$(SRCS))
 

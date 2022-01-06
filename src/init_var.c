@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_path.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 20:35:59 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/06 20:18:35 by gusalves         ###   ########.fr       */
+/*   Created: 2022/01/05 20:29:44 by gusalves          #+#    #+#             */
+/*   Updated: 2022/01/05 21:13:48 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*find_path(char *cmd)
+void start_struct(char **argv, char **envp, t_pipx *pipx)
 {
-	char	**path;
-	char	*cmd_return;
-	size_t	i;
-
-	i = 0;
-	path = ft_split(PATH, ':');
-	while (path[i] != NULL)
-	{
-		cmd_return = ft_strjoin(path[i], cmd);
-		if (access(cmd_return, F_OK) == 0)
-		{
-			free_matrix(path);
-			return (cmd_return);
-		}
-		free(cmd_return);
-		i++;
-	}
-	free_matrix(path);
-	return (NULL);
+	pipx->infile = argv[1];
+	pipx->cmd1 = argv[2];
+	pipx->cmd2 = argv[3];
+	pipx->outfile = argv[4];
+	pipx->envp = envp;
 }

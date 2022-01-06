@@ -6,11 +6,12 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:59:00 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/04 21:11:15 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:18:33 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
 
 void	free_matrix(char **path)
 {

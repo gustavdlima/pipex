@@ -6,21 +6,21 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:10:47 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/04 23:42:36 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/05 21:06:41 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	parent_proc(char **argv, char **envp, int *fd)
+void	parent_proc( int *fd, t_pipx *pipx)
 {
-	int		file_out;
+	int	outfile;
 
-	file_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (file_out == -1)
+	outfile = open(pipx->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (outfile == -1)
 		return ;
 	dup2(fd[0], STDIN_FILENO);
-	dup2(file_out, STDOUT_FILENO);
+	dup2(outfile, STDOUT_FILENO);
 	close(fd[1]);
-	cmd_exec(argv[3], envp);
+	cmd_exec(pipx->cmd2, pipx);
 }
