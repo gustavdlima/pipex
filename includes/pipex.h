@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 18:57:50 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/05 23:42:34 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:50:47 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef	struct	s_pipx {
 	char	*cmd1;
 	char	*cmd2;
 	char	**envp;
+	int		error_flag;
 }				t_pipx;
 
 // start functions
@@ -49,5 +50,10 @@ char	*find_path(char *cmd);
 void	free_matrix(char **path);
 char	*strjoin_free(char *s1, char const *s2);
 char	*space_treat(char *cmd);
+char	**reverse_space_treat(char **matrix);
+
+// error
+char	errors(char *string, int num);
+int	cmd_check(t_pipx *pipx);
 
 #endif

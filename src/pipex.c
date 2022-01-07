@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 17:50:08 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/06 21:42:59 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:03:56 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	pipex(t_pipx *pipx)
 	int	fd[2];
 	int	p_id;
 
+	pipx->error_flag = cmd_check(pipx);
 	pipe(fd);
 	if (pipe(fd) == -1)
-		return (perror("Error. FD is low than 0!"));
+		errors("Error in pipe() function.", 42);
 	p_id = fork();
 	if (p_id < 0)
-		return (perror("p_id error."));
+		errors("Error in fork() function.", 42);
 	if (p_id == 0)
 		child_proc(fd, pipx);
 	waitpid(p_id, NULL, 0);
@@ -42,5 +43,5 @@ int	main(int argc, char **argv, char **envp)
 		start_struct(argv, envp, &pipx);
 		pipex(&pipx);
 	}
-	return (0);
+	return (pipx.error_flag);
 }

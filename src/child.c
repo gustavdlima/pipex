@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:26:22 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/05 21:06:25 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/07 20:36:53 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	child_proc(int *fd, t_pipx *pipx)
 
 	infile = open(pipx->infile, O_RDONLY);
 	if (infile == -1)
-		return ;
+		errors("Error in child_proc open() function.", 42);
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);

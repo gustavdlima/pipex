@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_var.c                                         :+:      :+:    :+:   */
+/*   cmd_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 20:29:44 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/07 18:17:53 by gusalves         ###   ########.fr       */
+/*   Created: 2022/01/07 18:34:35 by gusalves          #+#    #+#             */
+/*   Updated: 2022/01/07 19:05:15 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void start_struct(char **argv, char **envp, t_pipx *pipx)
+int	cmd_check(t_pipx *pipx)
 {
-	pipx->infile = argv[1];
-	pipx->cmd1 = argv[2];
-	pipx->cmd2 = argv[3];
-	pipx->outfile = argv[4];
-	pipx->envp = envp;
+	char	**matrix;
+	char	*cmd1;
+	char	*cmd2;
+
+	pipx->error_flag = 0;
+	matrix = ft_split(pipx->cmd1, ' ');
+	cmd1 =  find_path(matrix[0]);
+	free_matrix(matrix);
+	matrix = ft_split(pipx->cmd2, ' ');
+	cmd2 = find_path(matrix[0]);
+	free_matrix(matrix);
+	if (cmd1 == NULL || cmd2 == NULL)
+		pipx->error_flag = 127;
+	return(pipx->error_flag);
 }
