@@ -1,36 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_path.c                                        :+:      :+:    :+:   */
+/*   space_treat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 20:35:59 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/10 20:57:30 by gusalves         ###   ########.fr       */
+/*   Created: 2022/01/10 20:50:51 by gusalves          #+#    #+#             */
+/*   Updated: 2022/01/10 20:58:05 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*find_path(char *cmd)
+char	**reverse_space_treat(char **matrix)
 {
-	char	**path;
-	char	*cmd_return;
-	size_t	i;
+	int	i;
+	int	j;
 
 	i = 0;
-	path = ft_split(PATH, ':');
-	while (path[i] != NULL)
+	while (matrix[i])
 	{
-		cmd_return = ft_strjoin(path[i], cmd);
-		if (access(cmd_return, F_OK) == 0)
+		j = 0;
+		while (matrix[i][j])
 		{
-			free_matrix(path);
-			return (cmd_return);
+			if (matrix[i][j] == '`')
+			{
+				matrix[i][j] = ' ';
+			}
+			j++;
 		}
-		free(cmd_return);
 		i++;
 	}
-	free_matrix(path);
-	return (NULL);
+	return (matrix);
+}
+
+char	*space_treat(char *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] == 39)
+		{
+			i++;
+			while (cmd[i] != 39)
+			{
+				if (cmd[i] == ' ')
+					cmd[i] = '`';
+				i++;
+			}
+		}
+		i++;
+	}
+	return (cmd);
 }

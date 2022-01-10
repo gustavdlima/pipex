@@ -6,66 +6,16 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:59:00 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/07 21:03:19 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/10 21:02:32 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	errors(char *string, int num)
+void	errors(char *string, int num)
 {
 	write(2, string, ft_strlen(string));
 	exit(num);
-}
-
-char	**reverse_space_treat(char **matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while(matrix[i])
-	{
-		j = 0;
-		while(matrix[i][j])
-		{
-			if (matrix[i][j] == 39)
-			{
-				j++;
-				while (matrix[i][j] != 39)
-				{
-					if (matrix[i][j] == ';')
-						matrix[i][j] = ' ';
-					j++;
-				}
-			}
-			j++;
-		}
-		i++;
-	}
-	return (matrix);
-}
-
-char	*space_treat(char *cmd)
-{
-	int	i;
-
-	i = 0;
-	while(cmd[i])
-	{
-		if (cmd[i] == 39)
-		{
-			i++;
-			while (cmd[i] != 39)
-			{
-				if (cmd[i] == ' ')
-					cmd[i] = ';';
-				i++;
-			}
-		}
-		i++;
-	}
-	return (cmd);
 }
 
 void	free_matrix(char **path)
