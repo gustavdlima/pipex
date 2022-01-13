@@ -1,23 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 20:59:00 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/13 21:23:55 by gusalves         ###   ########.fr       */
+/*   Created: 2022/01/12 15:17:53 by gusalves          #+#    #+#             */
+/*   Updated: 2022/01/13 17:20:36 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	check_dup(int a, int b)
+// void	free_array(char *array)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (array[i] != NULL)
+// 	{
+// 		free(array[i]);
+// 		i++;
+// 	}
+// 	free(array);
+// }
+
+void	free_matrix(char **matrix)
 {
-	if (dup2(a, b) == -1)
+	int	i;
+
+	i = 0;
+	while (matrix[i] != NULL)
 	{
-		write(2, "Permission denied\n", 19);
-		exit(1);
+		free(matrix[i]);
+		i++;
 	}
-	close(a);
+	free(matrix);
+}
+
+void	error_msg(char *message, int num)
+{
+	int	msg_len;
+
+	msg_len = ft_strlen(message) + 1;
+	write(2, message, msg_len);
+	exit(num);
 }

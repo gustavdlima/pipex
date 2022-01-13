@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 21:34:47 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/10 21:43:26 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/13 21:20:57 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ char	**matrix_split(char *cmd, int cmd_size)
 	{
 		if (cmd[i] == 39)
 		{
-			if (cmd[i + 1] == ' ')
-			{
-				space_treat(cmd);
-				matrix = ft_split(cmd, ' ');
-				reverse_space_treat(matrix);
-				cmd_treat(matrix);
-				break ;
-			}
+			space_treat(cmd);
+			matrix = ft_split(cmd, ' ');
+			reverse_space_treat(matrix);
+			cmd_treat(matrix);
+			break ;
 		}
 		else if (cmd[i] == cmd[cmd_size])
 		{
@@ -51,6 +48,8 @@ void	cmd_exec(char *cmd, t_pipx *pipx)
 	matrix = matrix_split(cmd, cmd_size);
 	cmd_path = find_path(matrix[0]);
 	if (cmd_path == NULL)
-		errors("Command not found.\n", 127);
+	{
+		error_msg("Command not found.\n", 127);
+	}
 	execve(cmd_path, matrix, pipx->envp);
 }

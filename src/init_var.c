@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 20:29:44 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/10 21:50:48 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:42:53 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	start_struct(char **argv, char **envp, t_pipx *pipx)
 	pipx->cmd2 = argv[3];
 	pipx->outfile = argv[4];
 	pipx->envp = envp;
+	pipx->infile_open = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 20:50:51 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/10 20:58:05 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:28:24 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**reverse_space_treat(char **matrix)
 		j = 0;
 		while (matrix[i][j])
 		{
-			if (matrix[i][j] == '`')
+			if (matrix[i][j] == 1)
 			{
 				matrix[i][j] = ' ';
 			}
@@ -47,7 +47,7 @@ char	*space_treat(char *cmd)
 			while (cmd[i] != 39)
 			{
 				if (cmd[i] == ' ')
-					cmd[i] = '`';
+					cmd[i] = 1;
 				i++;
 			}
 		}
