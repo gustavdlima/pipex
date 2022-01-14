@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 21:34:47 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/13 21:20:57 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/13 22:44:41 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	cmd_exec(char *cmd, t_pipx *pipx)
 	cmd_path = find_path(matrix[0]);
 	if (cmd_path == NULL)
 	{
+		free_matrix(matrix);
 		error_msg("Command not found.\n", 127);
 	}
 	execve(cmd_path, matrix, pipx->envp);
