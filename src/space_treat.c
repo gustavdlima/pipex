@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 20:50:51 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/12 14:28:24 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/14 05:05:16 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ char	*space_treat(char *cmd)
 		if (cmd[i] == 39)
 		{
 			i++;
-			while (cmd[i] != 39)
+			if (cmd[i] == 39)
+				i++;
+			while (cmd[i] != 39 && cmd[i] != '\0')
 			{
 				if (cmd[i] == ' ')
 					cmd[i] = 1;

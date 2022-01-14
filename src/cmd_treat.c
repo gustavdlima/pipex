@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 20:49:23 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/13 19:26:33 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/14 05:06:03 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*size_treat(char *cmd)
 		if (cmd[i] == 39)
 		{
 			i++;
-			while (cmd[i] && cmd[i] != 39)
+			while (cmd[i + 1] != '\0')
 			{
 				new_cmd[j] = cmd[i];
 				i++;
@@ -52,7 +52,11 @@ char	**cmd_treat(char **cmd_matrix)
 		while (cmd_matrix[i][j])
 		{
 			if (cmd_matrix[i][j] == 39)
+			{
+				if (cmd_matrix[i][j + 1] == '\0')
+					break ;
 				cmd_matrix[i] = size_treat(cmd_matrix[i]);
+			}
 			j++;
 		}
 		i++;
