@@ -6,7 +6,7 @@
 /*   By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 18:57:50 by gusalves          #+#    #+#             */
-/*   Updated: 2022/01/13 21:08:08 by gusalves         ###   ########.fr       */
+/*   Updated: 2022/01/14 19:56:37 by gusalves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 # define PIPEX_H
 
 # include "libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdio.h>
 # include <sys/wait.h>
-# include <fcntl.h>
 
 # define PATH "/usr/local/sbin/:/usr/local/bin/:\
 /usr/sbin/:/usr/bin/:/sbin/:/bin/"
-
-typedef struct s_error {
-}				t_error;
 
 typedef struct s_pipx {
 	char	**matrix;
@@ -38,7 +30,6 @@ typedef struct s_pipx {
 	char	**envp;
 	int		infile_open;
 	int		error_flag;
-	t_error	error;
 }				t_pipx;
 
 // start functions
