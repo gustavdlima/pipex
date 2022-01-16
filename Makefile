@@ -6,14 +6,14 @@
 #    By: gusalves <gusalves@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 02:05:40 by gusalves          #+#    #+#              #
-#    Updated: 2022/01/12 15:19:09 by gusalves         ###   ########.fr        #
+#    Updated: 2022/01/16 03:08:15 by gusalves         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= pipex
 
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror
 RM	= rm -f
 
 INCLUDES_DIR	= ./includes ./libs/libft
