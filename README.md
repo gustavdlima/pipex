@@ -14,7 +14,7 @@
 	<h2> Pontuação </h2>
 </p>
 <p>
-	<img src="images/../../images/100.jpg">
+	<img src="images/100.jpg">
 </p>
 
 <p>
